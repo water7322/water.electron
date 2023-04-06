@@ -1,17 +1,26 @@
 const { app } = require('electron');
+const isDev = require('electron-is-dev');
 const handleIPC = require('./ipc');
 const { create: createMainWindow, show: showMainWindow, close: closeMainWindow } = require('./window/main');
 const { create: createControlWindow } = require('./window/control');
 const remoteMain = require('@electron/remote/main');
 app.allowRendererProcessReuse = false;
 
-// const gotTheLock = app.requestSingleInstanceLock();
-// if (!gotTheLock) {
-//     app.quit();
-// } else {
-    // app.on('second-instance', () => {
-    //     showMainWindow();
-    // });
+if (require('electron-squirrel-startup')) app.quit();
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+    app.quit();
+} else {
+    app.on('second-instance', () => {
+        showMainWindow();
+    });
+    app.on('will-finish-launching', () => {
+        require('./crash-reporter').init();
+        console.log(isDev);
+        if (!isDev) {
+            require('./update.js');
+        }
+    });
     app.whenReady().then(() => {
         // createControlWindow();
         remoteMain.initialize();
@@ -25,8 +34,9 @@ app.allowRendererProcessReuse = false;
     });
     app.on('activate', () => {
         showMainWindow();
+        // process.crash();
     });
-// }
+}
 
 
 

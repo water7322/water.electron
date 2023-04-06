@@ -1,0 +1,37 @@
+Arguments: 
+  /Users/water768/.nvm/versions/node/v16.18.1/bin/node /usr/local/Cellar/yarn/1.22.18/libexec/bin/yarn.js add minidump
+
+PATH: 
+  /Users/water768/.nvm/versions/node/v16.18.1/bin:/Users/water768/.nvm/versions/node/v16.18.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/water768/.nvm/versions/node/v16.18.1/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.18.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EACCES: permission denied, rmdir '/Users/water768/water/water.electron/analyse/node_modules/minidump/build/x64'
+
+npm manifest: 
+  {
+    "name": "analyse",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

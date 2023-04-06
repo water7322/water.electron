@@ -35,6 +35,8 @@ function setAppMenu() {
                 { role: 'hideOthers' },
                 { role: 'unhide' },
                 { type: 'separator' },
+                { role: 'toggleDevTools' },
+                { type: 'separator' },
                 { role: 'quit' }
             ]
         },
